@@ -22,7 +22,7 @@ function getSavedData(){
     notesContainer.innerHTML = localStorage.getItem("noteData")
 }
 
-createBtn.addEventListener("click", (event) => {
+createBtn.addEventListener("click", () => {
     createNote();
     savedData();
 })
