@@ -1,6 +1,7 @@
 let inputBox = document.querySelector("#input-box");
 let taskList = document.querySelector(".task-list");
 let addBtn = document.querySelector(".add-btn");
+let row = document.querySelector(".row");
 
 inputBox.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
@@ -10,8 +11,12 @@ inputBox.addEventListener("keydown", (event) => {
 
 function addTask() {
     if (inputBox.value === "") {
-        alert("You must enter some task");
-    } else {
+        row.classList.add("shake-animate");
+        setTimeout(() => {
+            row.classList.remove("shake-animate");
+        }, 200);
+    } 
+    else {
         let li = document.createElement("li");
         li.innerHTML = inputBox.value;
 
@@ -21,7 +26,7 @@ function addTask() {
         taskList.appendChild(li);
     }
     inputBox.value = "";
-    saveData(); 
+    saveData();
 }
 
 taskList.addEventListener("click", (event) => {

@@ -14,7 +14,7 @@
     padding: 10px;
 }
 .todo-app{
-    width: 100%;
+    width: 90%;
     max-width: 540px;
     background-color: #fff;
     margin: 30px auto 20px;
@@ -35,6 +35,7 @@
     margin-left: 10px;
 }
 .row{
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -73,18 +74,18 @@ ul li{
 ul li::before{
     content: '';
     position: absolute;
+    top: 12px;
+    left: 8px;
     height: 28px;
     width: 28px;
     border-radius: 50%;
     background-image: url(./images/unchecked.png);
     background-size: cover;
     background-position: center;
-    top: 12px;
-    left: 8px;
 }
 ul li span{
     position: absolute;
-    right: 0;
+    right: 10px;
     top: 5px;
     width: 40px;
     height: 40px;
@@ -106,4 +107,18 @@ ul li span:hover {
 }
 .checked::before{
     background-image: url(./images/checked.png);
+}
+.shake-animate{
+    animation: horizontal-shaking 0.3s;
+}
+@keyframes horizontal-shaking {
+    0% { transform: translateX(0) }
+    12.5% { transform: translateX(5px) }
+    25% { transform: translateX(-5px) }
+    37.5% { transform: translateX(5px) }
+    50% { transform: translateX(-5px) }
+    62.5% { transform: translateX(5px) }
+    75% { transform: translateX(-5px) }
+    87.5% { transform: translateX(5px) }
+    100% { transform: translateX(0) }
 }
