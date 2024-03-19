@@ -1,5 +1,5 @@
 let hitNum;
-let newGame = document.querySelector("#btn");
+let btn = document.querySelector("#btn");
 function createBubbles(){
     let bubble = "";
     for(let i=1;i<=152;i++){
@@ -18,9 +18,10 @@ function setTimer(){
         }
         else{
             clearInterval(timeInterval);
+            document.querySelector("#hit").innerHTML = "-";
             document.querySelector("#pbtm").innerHTML = `<h1>Game Over</h1>`;
-            newGame.classList.remove("hide")
-            // document.querySelector("#pbtm").appendChild(newGame)
+            btn.innerHTML = "New Game";
+            btn.classList.remove("hide")
         }
     }, 1000);
 }
@@ -48,7 +49,7 @@ addEventListener("click",(event)=>{
 
 
 document.querySelector("#btn").addEventListener("click",()=>{
-    newGame.classList.add("hide")
+    btn.classList.add("hide")
     document.querySelector("#pbtm").innerHTML = "";
     
     timer = 30;
@@ -63,6 +64,16 @@ document.querySelector("#btn").addEventListener("click",()=>{
     
 })
 
-createBubbles();
-setTimer()
-getHit();
+window.addEventListener("load",()=>{
+    btn.classList.remove("hide")
+    btn.innerHTML = "Start Game"
+
+    document.querySelector("#pbtm").innerHTML = "";
+    document.querySelector("#hit").innerHTML = "-";
+
+    timer = 30;
+    document.querySelector("#timer").innerHTML = timer;
+
+    score = 0;
+    document.querySelector("#score").innerHTML = 0;
+})
