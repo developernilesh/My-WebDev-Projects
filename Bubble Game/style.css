@@ -11,7 +11,7 @@ html,body{
 #main{
     width: 100%;
     height: 100%;
-    background-color: #b1dab1;
+    background-color: #041f4e;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,18 +20,22 @@ html,body{
     overflow: hidden;
     width: 80%;
     height: 80%;
-    background-color: #fff;
+    background-color: #d0e1ff;
     border-radius: 10px;
+    position: relative;
+    border: 2px solid #041f4e;
+    box-shadow: 0px 0px 30px 2px #d0e1ffe8;
 }
 #ptop{
     padding: 0px 30%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #fff;
+    color: #d0e1ff;
     width: 100%;
     height: 50px;
-    background-color: #3e723e;
+    background-color: #041f4e;
+    border-bottom: 1px solid #d0e1ff;
 }
 .elem{
     display: flex;
@@ -43,11 +47,11 @@ html,body{
     font-weight: 500;
 }
 .box{
-    color: #000000ea;
+    color: #041f4e;
     font-size: 20px;
     font-weight: 600;
     padding: 4px 10px;
-    background-color: #fff;
+    background-color: #d0e1ff;
     border-radius: 5px;
 }
 #pbtm{
@@ -59,6 +63,7 @@ html,body{
     align-items: center;
     flex-wrap: wrap;
     gap: 20px;
+    background-color: #041f4e;
 }
 .bubble{
     display: flex;
@@ -66,12 +71,32 @@ html,body{
     justify-content: center;
     width: 30px;
     height: 30px;
-    background-color: #3e723e;
-    color: #fff;
+    background-color: #d0e1ff;
+    color: #041f4e;
     border-radius: 50%;
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 20px;
 }
 .bubble:hover{
     cursor: pointer;
-    background-color: #324b32;
+    background-color: #d0e1ffbb;
+}
+.hide{
+    display: none;
+}
+#btn{
+    border: none;
+    outline: none;
+    position: absolute;
+    top: 300px;
+    left: 435px;
+    padding: 5px 10px;
+    background-color: #041f4e;
+    color: #d0e1ff;
+    font-size: 22px;
+    border-radius: 5px;
+    border: 1px solid #d0e1ff;
+}
+h1{
+    color: #d0e1ff;
 }
