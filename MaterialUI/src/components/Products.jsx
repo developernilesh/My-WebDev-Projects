@@ -22,7 +22,8 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
+  width: 'auto',
+  height: 'auto',
   bgcolor: "background.paper",
   boxShadow: 24,
   p: 4,
@@ -63,7 +64,7 @@ const Products = ({ darkMode }) => {
 
   return (
     <>
-      <Grid2 container spacing={3} sx={{ marginBlock: "1rem" }}>
+      <Grid2 container spacing={2} sx={{ marginBlock: "1rem" }}>
         {products?.map((item) => (
           <Grid2 size={{ xs: 12, sm: 6, md: 4, lg: 3 }} key={item.id}>
             <Paper square>
@@ -112,7 +113,7 @@ const Products = ({ darkMode }) => {
                         fontSize: "0.7rem",
                       }}
                     >
-                      M.R.P:{" "}
+                      M.R.P:
                     </Typography>
                     <Typography
                       component="span"
