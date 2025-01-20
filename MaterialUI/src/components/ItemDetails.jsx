@@ -4,11 +4,14 @@ import {
   Card,
   CardContent,
   CardMedia,
+  Chip,
   CircularProgress,
   Divider,
   Grid2,
   List,
   ListItem,
+  ListItemText,
+  Rating,
   Typography,
 } from "@mui/material";
 import axios from "axios";
@@ -49,7 +52,9 @@ const ItemDetails = ({ itemId, setOpen }) => {
         <Grid2 container>
           {/* Left side - Images */}
           <Grid2 size={{ xs: 12, sm: 4 }}>
-            <Box sx={{height: "400px", display:"flex", alignItems:"center"}}>
+            <Box
+              sx={{ height: "400px", display: "flex", alignItems: "center" }}
+            >
               <CardMedia
                 component="img"
                 width="100%"
@@ -73,41 +78,87 @@ const ItemDetails = ({ itemId, setOpen }) => {
               ))}
             </List>
           </Grid2>
-
-          {/* Right side - Product details */}
           <Grid2 size={{ xs: 12, sm: 8 }}>
-            <CardContent>
-              <Typography variant="h5" component="div" gutterBottom>
+            <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+              <Typography variant="h5" component="h1">
                 {itemDetails.title}
               </Typography>
-              <Typography variant="body2" color="text.secondary" gutterBottom>
+              <Typography variant="body1" color="text.secondary">
                 {itemDetails.description}
               </Typography>
-              <Divider sx={{ my: 2 }} />
-              <Typography variant="body2" color="text.secondary">
-                <strong>Price:</strong> ${itemDetails.price?.toFixed(2)}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                <strong>Category:</strong> {itemDetails.category}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                <strong>Brand:</strong> {itemDetails.brand}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                <strong>Rating:</strong> {itemDetails.rating}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                <strong>Stock:</strong> {itemDetails.stock} available
-              </Typography>
-              <Divider sx={{ my: 2 }} />
-              <Typography variant="body2" color="text.secondary">
-                <strong>Shipping Information:</strong>{" "}
-                {itemDetails.shippingInformation}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                <strong>Availability:</strong> {itemDetails.availabilityStatus}
-              </Typography>
-            </CardContent>
+              <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                <Typography variant="h5" color="primary">
+                  ${itemDetails.price?.toFixed(2)}
+                </Typography>
+                {itemDetails.discountPercentage > 0 && (
+                  <Chip
+                    label={`${itemDetails.discountPercentage}% OFF`}
+                    color="secondary"
+                    size="small"
+                  />
+                )}
+              </Box>
+              <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                <Rating value={itemDetails.rating} precision={0.1} readOnly />
+                <Typography variant="body2">
+                  ({itemDetails.rating?.toFixed(1)})
+                </Typography>
+              </Box>
+              <Divider />
+              <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+                <Typography variant="span" color="text.primary">
+                  Stock:&nbsp;
+                </Typography>
+                <Typography variant="span" color="text.secondary">
+                  {itemDetails.stock},&nbsp;
+                </Typography>
+                <Typography variant="span" color="text.primary">
+                  Warranty:&nbsp;
+                </Typography>
+                <Typography variant="span" color="text.secondary">
+                  {itemDetails.warrantyInformation}
+                </Typography>
+              </Box>
+              <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+                <Typography variant="span" color="text.primary">
+                  Weight:&nbsp;
+                </Typography>
+                <Typography variant="span" color="text.secondary">
+                  {`${itemDetails.weight} g`},&nbsp;
+                </Typography>
+                <Typography variant="span" color="text.primary">
+                  Dimensions:&nbsp;
+                </Typography>
+                <Typography
+                  variant="span"
+                  color="text.secondary"
+                >{`${itemDetails.dimensions?.width} x ${itemDetails.dimensions?.height} x ${itemDetails.dimensions?.depth} cm`}</Typography>
+              </Box>
+              <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+                <Typography variant="span" color="text.primary">
+                  Shipping:&nbsp;
+                </Typography>
+                <Typography variant="span" color="text.secondary">
+                  {itemDetails.shippingInformation}
+                </Typography>
+              </Box>
+              <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+                <Typography variant="span" color="text.primary">
+                  Return Policy:&nbsp;
+                </Typography>
+                <Typography variant="span" color="text.secondary">
+                  {itemDetails.returnPolicy}
+                </Typography>
+              </Box>
+              <Box>
+                <Typography variant="subtitle2">Tags:</Typography>
+                <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, mt: 1 }}>
+                  {itemDetails.tags?.map((tag, index) => (
+                    <Chip key={index} label={tag} size="small" />
+                  ))}
+                </Box>
+              </Box>
+            </Box>
           </Grid2>
         </Grid2>
 
