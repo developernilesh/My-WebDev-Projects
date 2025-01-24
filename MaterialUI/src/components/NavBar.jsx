@@ -6,12 +6,12 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 
-const NavBar = ({ darkMode, setDarkMode }) => {
+const NavBar = ({ darkMode, setDarkMode, setOpen }) => {
   return (
     <>
       <Toolbar>
-        <IconButton color="inherit">
-          <MenuIcon />
+        <IconButton onClick={() => setOpen(true)} color="inherit">
+          <MenuIcon/>
         </IconButton>
         <Typography variant="h6" sx={{ flexGrow: 1 }}>
           ShopHub
